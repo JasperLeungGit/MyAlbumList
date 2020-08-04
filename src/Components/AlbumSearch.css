@@ -1,0 +1,19 @@
+div.transbox {
+  position: absolute;
+  z-index: 300;
+  background-color: black;
+  opacity: 0.6;
+  width: 150vw;
+  margin-left: -30vw;
+  margin-top: -30vh;
+  height: 150vh;
+  display: none;
+  position: fixed;
+}
+
+.albumForm {
+  position: absolute;
+  margin-left: 30vw;
+  margin-top: 30vh;
+  display: none;
+}

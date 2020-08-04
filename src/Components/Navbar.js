@@ -74,11 +74,9 @@ const Navbar = (props) => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="collapse navbar-collapse" id="navbarText">
-        <ul className="navbar-nav mr-auto">
-          {!isAuthenticated ? unauthenticatedNavBar() : authenticatedNavBar()}
-        </ul>
-      </div>
+      <ul className="navbar-nav mr-auto">
+        {!isAuthenticated ? unauthenticatedNavBar() : authenticatedNavBar()}
+      </ul>
     </nav>
   );
 };
