@@ -17,16 +17,16 @@ const AlbumSearch = (props) => {
     fetchItunes();
   }, [queryTerm]);
 
-  useEffect(() => {
-    console.log(albums);
-  }, [albums]);
-
   const onChange = (e) => {
-    console.log(e.target.value);
     setQueryTerm(e.target.value);
   };
   const onSubmit = (e) => {
     e.preventDefault();
+  };
+  const displayForm = (artwork, albumName, artistName) => {
+    console.log("album name " + albumName);
+    console.log("artist name " + artistName);
+    console.log("display Form ");
   };
 
   return (
@@ -52,17 +52,19 @@ const AlbumSearch = (props) => {
               <th>Album Art</th>
               <th>Name</th>
               <th>Artist</th>
-              <th>Actions</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {albums.map((album) => {
               return (
                 <AlbumResult
+                  key={album.collectionId}
                   artworkUrl100={album.artworkUrl100}
                   artistName={album.artistName}
                   collectionName={album.collectionName}
                   releaseDate={album.releaseDate}
+                  displayForm={displayForm}
                 />
               );
             })}

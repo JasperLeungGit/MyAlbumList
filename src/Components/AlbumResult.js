@@ -1,6 +1,5 @@
 import React from "react";
 
-// test change
 const AlbumResult = (props) => (
   <tr>
     <td>
@@ -10,16 +9,18 @@ const AlbumResult = (props) => (
     <td>{props.collectionName}</td>
     <td>{props.artistName}</td>
     <td>
-      Edit
-      {/* <Link to={"/edit/" + props.exercise._id}>edit</Link> |{" "}
-      <a
-        href="#"
-        onClick={() => {
-          props.deleteExercise(props.exercise._id);
-        }}
+      <button
+        type="button"
+        className="btn btn-outline-success"
+        onClick={props.displayForm.bind(
+          this,
+          props.artworkUrl100,
+          props.collectionName,
+          props.artistName
+        )}
       >
-        delete
-      </a> */}
+        Add
+      </button>
     </td>
   </tr>
 );

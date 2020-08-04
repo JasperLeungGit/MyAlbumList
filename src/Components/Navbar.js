@@ -33,9 +33,6 @@ const Navbar = (props) => {
         <Link to="/register">
           <li className="nav-item nav-link">Register</li>
         </Link>
-        <Link to="/searchalbums">
-          <li className="nav-item nav-link">Search For Albums</li>
-        </Link>
       </>
     );
   };
