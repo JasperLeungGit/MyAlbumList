@@ -1,18 +1,32 @@
 import React, { useState, useEffect, useContext } from "react";
 import AlbumResult from "./AlbumResult";
+import AlbumForm from "./AlbumForm";
+import ListService from "../Services/ListService";
 import { AuthContext } from "../Context/AuthContext";
 import "./AlbumSearch.css";
 
 const AlbumSearch = (props) => {
   const [albums, setAlbums] = useState([]);
   const [queryTerm, setQueryTerm] = useState([""]);
+  const [artwork, setArtwork] = useState("");
+  const [artist, setArtist] = useState("");
+  const [albumName, setAlbumName] = useState("");
+  const [score, setScore] = useState("");
+  var review = "";
+  const [album, setAlbum] = useState({
+    name: " ",
+    artist: " ",
+    artwork: " ",
+    rating: " ",
+    review: " ",
+  });
   const URL = "https://itunes.apple.com/";
   const authContext = useContext(AuthContext);
 
   useEffect(() => {
     async function fetchItunes() {
       const response = await fetch(
-        `${URL}search?term=${queryTerm}&entity=${"album"}&limit=${"100"}`
+        `${URL}search?term=${queryTerm}&entity=${"album"}&limit=${"50"}`
       );
       const data = await response.json();
       setAlbums(data.results);
@@ -23,21 +37,76 @@ const AlbumSearch = (props) => {
   const onChange = (e) => {
     setQueryTerm(e.target.value);
   };
+
+  const onChangeReview = (e) => {
+    setAlbum({
+      name: albumName,
+      artist: artist,
+      artwork: artwork,
+      rating: score,
+      review: e.target.value,
+    });
+    review = e.target.value;
+  };
+
+  const onChangeScore = (e) => {
+    setScore(e.target.value);
+    setAlbum({
+      name: albumName,
+      artist: artist,
+      artwork: artwork,
+      rating: score,
+      review: review,
+    });
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
   };
-  const displayForm = (artwork, albumName, artistName) => {
-    console.log("album name " + albumName);
-    console.log("artist name " + artistName);
-    console.log("display Form ");
 
-    // document.getElementById("albumForm").style.display = "block";
+  const addToList = (e) => {
+    console.log("addToList");
+    e.preventDefault();
+    ListService.postAlbum(album).then((data) => {
+      const { message } = data;
+      if (!message.msgError) {
+        console.log("album successfully posted");
+      } else if (message.msgBody === "UnAuthorized") {
+        console.log("Error: UnAuthorized");
+        authContext.setUser({ username: "", role: "" });
+        authContext.setIsAuthenticated(false);
+      } else {
+        console.log("Error");
+      }
+    });
+    document.getElementById("bgdim").style.display = "none";
+    document.getElementById("albumForm").reset();
+    document.getElementById("albumForm").style.display = "none";
+  };
+
+  const displayForm = (artwork, albumName, artist) => {
+    setArtwork(artwork);
+    setAlbumName(albumName);
+    setArtist(artist);
+    document.getElementById("bgdim").style.display = "block";
+    document.getElementById("albumForm").style.display = "block";
   };
 
   if (authContext.isAuthenticated) {
     return (
       <div>
+        <br></br>
+        <AlbumForm
+          id="albumForm"
+          artwork={artwork}
+          albumName={albumName}
+          artist={artist}
+          addToList={addToList}
+          onChangeScore={onChangeScore}
+          onChangeReview={onChangeReview}
+        ></AlbumForm>
         <div className="transbox" id="bgdim"></div>
+
         <form onSubmit={onSubmit}>
           <label htmlFor="search" className="sr-only">
             Search:{" "}
@@ -49,7 +118,7 @@ const AlbumSearch = (props) => {
             onChange={onChange}
             placeholder="Enter an album or artist name"
           />
-          <small id="passwordHelpBlock" class="form-text text-muted">
+          <small id="passwordHelpBlock" className="form-text text-muted">
             If you type too fast the search might not work lol
           </small>
         </form>

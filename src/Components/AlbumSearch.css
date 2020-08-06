@@ -9,11 +9,15 @@ div.transbox {
   height: 150vh;
   display: none;
   position: fixed;
+  z-index: 0;
 }
 
 .albumForm {
+  background-color: white;
+  padding: 5vh;
   position: absolute;
-  margin-left: 30vw;
-  margin-top: 30vh;
+  margin-left: 25vw;
+  margin-top: 10vh;
   display: none;
+  z-index: 1;
 }

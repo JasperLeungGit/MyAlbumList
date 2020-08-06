@@ -2,33 +2,65 @@ import React from "react";
 
 const AlbumForm = (props) => {
   return (
-    <form id="albumForm" className="albumForm">
-      <label for="Review" className="sr-only">
-        Review:{" "}
-      </label>
-      <input
-        type="text"
-        id="Review"
-        className="form-control"
-        placeholder="Enter Review"
-      />
-      <label for="sel1">Select list (select one) </label>
-      <select class="form-control" id="sel1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        <option>6</option>
-        <option>7</option>
-        <option>8</option>
-        <option>9</option>
-        <option>10</option>
-      </select>
-      <button className="btn btn-lg btn-primary btn-block" type="submit">
-        Add to List
-      </button>
-    </form>
+    <div>
+      <form
+        id="albumForm"
+        className="albumForm"
+        style={{
+          maxWidth: "50vw",
+        }}
+        onSubmit={props.addToList}
+      >
+        <h3 className="font-weight-light">Add Album To List</h3>
+        <br></br>
+        <img
+          src={props.artwork}
+          alt=""
+          style={{
+            maxHeight: "10vh",
+            maxWidth: "15vw",
+            width: "auto",
+            height: "auto",
+            float: "left",
+            marginRight: "3vw",
+          }}
+        />
+        <h3 className="font-weight-bold">
+          {props.artist + "-" + props.albumName}
+        </h3>
+        <br></br>
+        <label htmlFor="sel1">Score </label>
+        <select
+          className="form-control"
+          id="sel1"
+          onChange={props.onChangeScore}
+          defaultValue={"1"}
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <br></br>
+        <label htmlFor="review">Review</label>
+        <textarea
+          className="form-control"
+          id="review"
+          rows="4"
+          onChange={props.onChangeReview}
+        ></textarea>
+        <br></br>
+        <button className="btn btn-lg btn-primary btn-block" type="submit">
+          Add to List
+        </button>
+      </form>
+    </div>
   );
 };
 
