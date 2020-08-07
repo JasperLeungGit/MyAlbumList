@@ -5,7 +5,6 @@ import Login from "./Components/Login";
 import Register from "./Components/Register";
 import PublicList from "./Components/PublicList";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Todos from "./Components/Todos";
 import AlbumSearch from "./Components/AlbumSearch";
 import Albums from "./Components/Albums";
 

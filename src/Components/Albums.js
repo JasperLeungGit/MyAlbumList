@@ -109,55 +109,57 @@ const Albums = (props) => {
     refreshList();
   };
 
-  return (
-    <div>
-      <br></br>
-      <h3>My List</h3>
-      <EditAlbumForm
-        id="albumForm"
-        albumID={id}
-        artwork={artwork}
-        name={name}
-        artist={artist}
-        rating={rating}
-        review={review}
-        onChangeRating={onChangeRating}
-        onChangeReview={onChangeReview}
-        editAlbum={editAlbum}
-        cancel={cancel}
-      ></EditAlbumForm>
-      <div className="transbox" id="bgdim"></div>
-      <table className="table">
-        <thead className="thead-light">
-          <tr>
-            <th>Album Art</th>
-            <th>Name</th>
-            <th>Artist</th>
-            <th>Rating</th>
-            <th>Review</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {albums.map((album) => {
-            return (
-              <AlbumItem
-                key={album._id}
-                id={album._id}
-                artwork={album.artwork}
-                artist={album.artist}
-                name={album.name}
-                rating={album.rating}
-                review={album.review}
-                displayForm={displayForm}
-                deleteAlbum={deleteAlbum}
-              />
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
-  );
+  if (authContext.isAuthenticated) {
+    return (
+      <div>
+        <br></br>
+        <h3>My List</h3>
+        <EditAlbumForm
+          id="albumForm"
+          albumID={id}
+          artwork={artwork}
+          name={name}
+          artist={artist}
+          rating={rating}
+          review={review}
+          onChangeRating={onChangeRating}
+          onChangeReview={onChangeReview}
+          editAlbum={editAlbum}
+          cancel={cancel}
+        ></EditAlbumForm>
+        <div className="transbox" id="bgdim"></div>
+        <table className="table">
+          <thead className="thead-light">
+            <tr>
+              <th>Album Art</th>
+              <th>Name</th>
+              <th>Artist</th>
+              <th>Rating</th>
+              <th>Review</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {albums.map((album) => {
+              return (
+                <AlbumItem
+                  key={album._id}
+                  id={album._id}
+                  artwork={album.artwork}
+                  artist={album.artist}
+                  name={album.name}
+                  rating={album.rating}
+                  review={album.review}
+                  displayForm={displayForm}
+                  deleteAlbum={deleteAlbum}
+                />
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    );
+  } else return <h1>You are not logged in. </h1>;
 };
 
 export default Albums;

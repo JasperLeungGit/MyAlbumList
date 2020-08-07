@@ -48,13 +48,13 @@ const Navbar = (props) => {
           <li className="nav-item nav-link">Home</li>
         </Link>
         <Link to={"/editlist/"}>
-          <li className="nav-item nav-link">Edit my List </li>
+          <li className="nav-item nav-link">Edit my list </li>
         </Link>
         <Link to={"/list/" + username}>
           <li className="nav-item nav-link">Share my list</li>
         </Link>
         <Link to={"/searchalbums/"}>
-          <li className="nav-item nav-link">Search For Albums</li>
+          <li className="nav-item nav-link">Search for albums</li>
         </Link>
         {user.role === "admin" ? (
           <Link to={"/admin/"}>

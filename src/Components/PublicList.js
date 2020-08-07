@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import PublicAlbumItem from "./PublicAlbumItem";
 import ListService from "../Services/ListService";
-import { AuthContext } from "../Context/AuthContext";
+import Message from "../Components/Message";
 
 const PublicList = (props) => {
   const [albums, setAlbums] = useState([]);
   const [username, setUsername] = useState("");
+  const [URL, setURL] = useState("");
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     var href = window.location.href.substring(
       window.location.href.lastIndexOf("/") + 1
     );
+    setURL(window.location.href);
     setUsername(href);
     ListService.getList(href).then((data) => {
       setAlbums(data.albums);
@@ -46,6 +49,35 @@ const PublicList = (props) => {
           })}
         </tbody>
       </table>
+      <br></br>
+
+      <h3>Share this list!</h3>
+
+      <input
+        id="link"
+        type="text"
+        name="link"
+        className="form-control"
+        defaultValue={URL}
+        style={{ float: "left", width: "52.75vw" }}
+      />
+
+      <button
+        className="btn btn-outline-success"
+        onClick={() => {
+          var copyText = document.getElementById("link");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999);
+          document.execCommand("copy");
+          setMessage({
+            msgBody: "Copied link to clipboard.",
+            msgError: false,
+          });
+        }}
+      >
+        Copy Link{" "}
+      </button>
+      {message ? <Message message={message} /> : null}
     </div>
   );
 };
