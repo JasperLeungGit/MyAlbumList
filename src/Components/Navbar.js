@@ -53,6 +53,9 @@ const Navbar = (props) => {
         <Link to={"/list/" + username}>
           <li className="nav-item nav-link">Share my list</li>
         </Link>
+        <Link to={"/albums"}>
+          <li className="nav-item nav-link">Albums</li>
+        </Link>
         <Link to={"/searchalbums/"}>
           <li className="nav-item nav-link">Search For Albums</li>
         </Link>

@@ -12,11 +12,11 @@ div.transbox {
   z-index: 0;
 }
 
-.albumForm {
+.editAlbumForm {
   background-color: white;
   padding: 5vh;
   position: absolute;
-  margin-left: 20vw;
+  margin-left: 25vw;
   margin-top: 10vh;
   display: none;
   z-index: 1;

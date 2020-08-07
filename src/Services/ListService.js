@@ -21,6 +21,21 @@ export default {
         "Content-Type": "application/json",
       },
     }).then((response) => {
+      console.log(album);
+      if (response.status !== 401) {
+        return response.json().then((data) => data);
+      } else return { message: { msgBody: "UnAuthorized" }, msgError: true };
+    });
+  },
+
+  deleteAlbum: (id) => {
+    return fetch("/user/album/delete/", {
+      method: "post",
+      body: JSON.stringify(id),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((response) => {
       if (response.status !== 401) {
         return response.json().then((data) => data);
       } else return { message: { msgBody: "UnAuthorized" }, msgError: true };

@@ -1,0 +1,13 @@
+.review {
+  word-wrap: break-word;
+  width: 15vw;
+}
+
+.rating {
+  font-weight: bold;
+}
+
+.p {
+  word-wrap: break-word;
+  width: 5vw;
+}

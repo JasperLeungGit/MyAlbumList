@@ -7,6 +7,7 @@ import List from "./Components/List";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Todos from "./Components/Todos";
 import AlbumSearch from "./Components/AlbumSearch";
+import Albums from "./Components/Albums";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/list/:username" component={List} />
       <Route path="/register" component={Register} />
       <Route path="/searchAlbums" component={AlbumSearch} />
+      <Route path="/albums" component={Albums} />
     </Router>
   );
 }

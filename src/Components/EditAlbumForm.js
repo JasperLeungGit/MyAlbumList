@@ -1,6 +1,6 @@
 import React from "react";
 
-const AlbumForm = (props) => {
+const EditAlbumForm = (props) => {
   return (
     <div>
       <form
@@ -9,9 +9,9 @@ const AlbumForm = (props) => {
         style={{
           maxWidth: "50vw",
         }}
-        onSubmit={props.addToList}
+        onSubmit={props.editAlbum.bind(this, props.albumID)}
       >
-        <h3 className="font-weight-light">Add Album To List</h3>
+        <h3 className="font-weight-light">Edit Album</h3>
         <br></br>
         <img
           src={props.artwork}
@@ -25,16 +25,14 @@ const AlbumForm = (props) => {
             marginRight: "3vw",
           }}
         />
-        <h3 className="font-weight-bold">
-          {props.artist + "-" + props.albumName}
-        </h3>
+        <h3 className="font-weight-bold">{props.artist + "-" + props.name}</h3>
         <br></br>
-        <label htmlFor="sel1">Rating </label>
+        <label htmlFor="sel1">Score </label>
         <select
           className="form-control"
           id="sel1"
           onChange={props.onChangeRating}
-          defaultValue={"1"}
+          defaultValue={props.rating}
         >
           <option value="1">1</option>
           <option value="2">2</option>
@@ -54,10 +52,11 @@ const AlbumForm = (props) => {
           id="review"
           rows="4"
           onChange={props.onChangeReview}
+          defaultValue={props.review}
         ></textarea>
         <br></br>
         <button className="btn btn-lg btn-primary btn-block" type="submit">
-          Add to List
+          Update album entry
         </button>
         <br></br>
         <button
@@ -72,4 +71,4 @@ const AlbumForm = (props) => {
   );
 };
 
-export default AlbumForm;
+export default EditAlbumForm;

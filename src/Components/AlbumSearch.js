@@ -11,15 +11,8 @@ const AlbumSearch = (props) => {
   const [artwork, setArtwork] = useState("");
   const [artist, setArtist] = useState("");
   const [albumName, setAlbumName] = useState("");
-  const [score, setScore] = useState("");
-  var review = "";
-  const [album, setAlbum] = useState({
-    name: " ",
-    artist: " ",
-    artwork: " ",
-    rating: " ",
-    review: " ",
-  });
+  const [rating, setRating] = useState("1");
+  var review = "\n";
   const URL = "https://itunes.apple.com/";
   const authContext = useContext(AuthContext);
 
@@ -39,25 +32,11 @@ const AlbumSearch = (props) => {
   };
 
   const onChangeReview = (e) => {
-    setAlbum({
-      name: albumName,
-      artist: artist,
-      artwork: artwork,
-      rating: score,
-      review: e.target.value,
-    });
     review = e.target.value;
   };
 
-  const onChangeScore = (e) => {
-    setScore(e.target.value);
-    setAlbum({
-      name: albumName,
-      artist: artist,
-      artwork: artwork,
-      rating: score,
-      review: review,
-    });
+  const onChangeRating = (e) => {
+    setRating(e.target.value);
   };
 
   const onSubmit = (e) => {
@@ -65,8 +44,14 @@ const AlbumSearch = (props) => {
   };
 
   const addToList = (e) => {
-    console.log("addToList");
     e.preventDefault();
+    const album = {
+      name: albumName,
+      artist: artist,
+      artwork: artwork,
+      rating: rating,
+      review: review,
+    };
     ListService.postAlbum(album).then((data) => {
       const { message } = data;
       if (!message.msgError) {
@@ -79,6 +64,13 @@ const AlbumSearch = (props) => {
         console.log("Error");
       }
     });
+    document.getElementById("bgdim").style.display = "none";
+    document.getElementById("albumForm").reset();
+    document.getElementById("albumForm").style.display = "none";
+  };
+
+  const cancel = (e) => {
+    e.preventDefault();
     document.getElementById("bgdim").style.display = "none";
     document.getElementById("albumForm").reset();
     document.getElementById("albumForm").style.display = "none";
@@ -102,8 +94,9 @@ const AlbumSearch = (props) => {
           albumName={albumName}
           artist={artist}
           addToList={addToList}
-          onChangeScore={onChangeScore}
+          onChangeRating={onChangeRating}
           onChangeReview={onChangeReview}
+          cancel={cancel}
         ></AlbumForm>
         <div className="transbox" id="bgdim"></div>
 
