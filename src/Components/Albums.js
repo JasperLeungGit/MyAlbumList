@@ -36,12 +36,14 @@ const Albums = (props) => {
   };
 
   const displayForm = (id, artwork, name, artist, oldRating, oldReview) => {
+    console.log(oldRating);
+    console.log(oldReview);
+    rating = oldRating;
+    review = oldReview;
     setID(id);
     setArtwork(artwork);
     setName(name);
     setArtist(artist);
-    rating = oldRating;
-    review = oldReview;
     document.getElementById("bgdim").style.display = "block";
     document.getElementById("albumForm").style.display = "block";
   };
@@ -117,6 +119,8 @@ const Albums = (props) => {
         artwork={artwork}
         name={name}
         artist={artist}
+        rating={rating}
+        review={review}
         onChangeRating={onChangeRating}
         onChangeReview={onChangeReview}
         editAlbum={editAlbum}

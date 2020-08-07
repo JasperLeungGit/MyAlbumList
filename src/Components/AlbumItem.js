@@ -1,7 +1,7 @@
 import React from "react";
 import "./AlbumItem.css";
 
-const AlbumResult = (props) => (
+const AlbumItem = (props) => (
   <tr>
     <td>
       {" "}
@@ -56,4 +56,4 @@ const AlbumResult = (props) => (
   </tr>
 );
 
-export default AlbumResult;
+export default AlbumItem;

@@ -41,26 +41,23 @@ const Navbar = (props) => {
     const username = user.username;
     return (
       <>
-        <Link to={"/home/" + username}>
+        <Link to={"/home/"}>
           <div className="navbar-brand">MyAlbumList</div>
         </Link>
-        <Link to={"/home/" + username}>
+        <Link to={"/home/"}>
           <li className="nav-item nav-link">Home</li>
         </Link>
-        <Link to={"/editlist/" + username}>
+        <Link to={"/editlist/"}>
           <li className="nav-item nav-link">Edit my List </li>
         </Link>
         <Link to={"/list/" + username}>
           <li className="nav-item nav-link">Share my list</li>
         </Link>
-        <Link to={"/albums"}>
-          <li className="nav-item nav-link">Albums</li>
-        </Link>
         <Link to={"/searchalbums/"}>
           <li className="nav-item nav-link">Search For Albums</li>
         </Link>
         {user.role === "admin" ? (
-          <Link to={"/admin/" + username}>
+          <Link to={"/admin/"}>
             <li className="nav-item nav-link">Admin</li>
           </Link>
         ) : null}
