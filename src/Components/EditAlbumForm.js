@@ -8,10 +8,12 @@ const EditAlbumForm = (props) => {
         className="albumForm"
         style={{
           maxWidth: "50vw",
+          position: "fixed",
+          transform: "translate(-25%, 0)",
         }}
         onSubmit={props.editAlbum.bind(this, props.albumID)}
       >
-        <h3 className="font-weight-light">Edit Album</h3>
+        <h3 className="font-weight-light">Edit Album Entry</h3>
         <br></br>
         <img
           src={props.artwork}
@@ -51,6 +53,7 @@ const EditAlbumForm = (props) => {
           className="form-control"
           id="review"
           rows="4"
+          spellcheck="false"
           onChange={props.onChangeReview}
           defaultValue={props.review}
         ></textarea>

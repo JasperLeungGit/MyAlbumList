@@ -32,8 +32,10 @@ const Login = (props) => {
 
   return (
     <div>
+      <br></br>
       <form onSubmit={onSubmit}>
-        <h3>Sign in</h3>
+        <h3>Log In</h3>
+        <br></br>
         <label htmlFor="username" className="sr-only">
           Username:{" "}
         </label>
@@ -54,7 +56,12 @@ const Login = (props) => {
           className="form-control"
           placeholder="Enter Password"
         />
-        <button className="btn btn-lg btn-primary btn-block" type="submit">
+        <br></br>
+        <button
+          className="btn btn-lg btn-primary btn-block"
+          type="submit"
+          style={{ marginBottom: "1vw" }}
+        >
           Log in{" "}
         </button>
       </form>

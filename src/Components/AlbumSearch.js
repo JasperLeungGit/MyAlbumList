@@ -112,13 +112,15 @@ const AlbumSearch = (props) => {
             placeholder="Enter an album or artist name"
           />
           <small id="passwordHelpBlock" className="form-text text-muted">
-            If you type too fast the search might not work lol
+            If you type too fast the search might not work :( (even the
+            professionally trained monkeys at MyAlbumList HQ couldn't figure
+            this one out)
           </small>
         </form>
-
+        <br></br>
         <div>
           <h3>Results</h3>
-          <table className="table">
+          <table className="table table-hover">
             <thead className="thead-light">
               <tr>
                 <th>Album Art</th>

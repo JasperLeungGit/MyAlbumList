@@ -41,8 +41,10 @@ const Register = (props) => {
 
   return (
     <div>
+      <br></br>
       <form onSubmit={onSubmit}>
         <h3>Register</h3>
+        <br></br>
         <label htmlFor="username" className="sr-only">
           Username:{" "}
         </label>
@@ -65,7 +67,12 @@ const Register = (props) => {
           className="form-control"
           placeholder="Enter Password"
         />
-        <button className="btn btn-lg btn-primary btn-block" type="submit">
+        <br></br>
+        <button
+          className="btn btn-lg btn-primary btn-block"
+          type="submit"
+          style={{ marginBottom: "1vw" }}
+        >
           Register
         </button>
       </form>

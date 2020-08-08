@@ -8,6 +8,8 @@ const AlbumForm = (props) => {
         className="albumForm"
         style={{
           maxWidth: "50vw",
+          position: "fixed",
+          transform: "translate(-20%, 0)",
         }}
         onSubmit={props.addToList}
       >
@@ -53,6 +55,7 @@ const AlbumForm = (props) => {
           className="form-control"
           id="review"
           rows="4"
+          spellcheck="false"
           onChange={props.onChangeReview}
         ></textarea>
         <br></br>

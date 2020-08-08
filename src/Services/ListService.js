@@ -13,6 +13,14 @@ export default {
     });
   },
 
+  getUsers: () => {
+    return fetch("/user/userlist").then((response) => {
+      if (response.status !== 401) {
+        return response.json().then((data) => data);
+      } else return { message: { msgBody: "UnAuthorized", msgError: true } };
+    });
+  },
+
   postAlbum: (album) => {
     return fetch("/user/album", {
       method: "post",

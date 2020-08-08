@@ -36,8 +36,6 @@ const Albums = (props) => {
   };
 
   const displayForm = (id, artwork, name, artist, oldRating, oldReview) => {
-    console.log(oldRating);
-    console.log(oldReview);
     rating = oldRating;
     review = oldReview;
     setID(id);
@@ -73,7 +71,6 @@ const Albums = (props) => {
   };
 
   const editAlbum = (albumID) => {
-    console.log("edit");
     const album = {
       name: name,
       artist: artist,
@@ -128,7 +125,7 @@ const Albums = (props) => {
           cancel={cancel}
         ></EditAlbumForm>
         <div className="transbox" id="bgdim"></div>
-        <table className="table">
+        <table className="table table-hover">
           <thead className="thead-light">
             <tr>
               <th>Album Art</th>

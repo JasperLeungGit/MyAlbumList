@@ -33,6 +33,9 @@ const Navbar = (props) => {
         <Link to="/register">
           <li className="nav-item nav-link">Register</li>
         </Link>
+        <Link to="/users">
+          <li className="nav-item nav-link">Search for users</li>
+        </Link>
       </>
     );
   };
@@ -54,7 +57,10 @@ const Navbar = (props) => {
           <li className="nav-item nav-link">Share my list</li>
         </Link>
         <Link to={"/searchalbums/"}>
-          <li className="nav-item nav-link">Search for albums</li>
+          <li className="nav-item nav-link">Add albums to list</li>
+        </Link>
+        <Link to="/users">
+          <li className="nav-item nav-link">Search for users</li>
         </Link>
         {user.role === "admin" ? (
           <Link to={"/admin/"}>

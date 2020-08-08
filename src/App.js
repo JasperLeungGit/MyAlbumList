@@ -6,6 +6,7 @@ import Register from "./Components/Register";
 import PublicList from "./Components/PublicList";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AlbumSearch from "./Components/AlbumSearch";
+import UserSearch from "./Components/UserSearch";
 import Albums from "./Components/Albums";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Route path="/list/:username" component={PublicList} />
       <Route path="/register" component={Register} />
       <Route path="/searchAlbums" component={AlbumSearch} />
+      <Route path="/users" component={UserSearch} />
     </Router>
   );
 }
