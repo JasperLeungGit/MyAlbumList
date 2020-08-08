@@ -28,7 +28,7 @@ const AlbumItem = (props) => (
     <td>
       <p className="review">{props.review}</p>
     </td>
-    <td>
+    <td style={{ width: "10vw" }}>
       <button
         type="button"
         className="btn btn-outline-primary"
