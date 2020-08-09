@@ -1,5 +1,9 @@
 A demo of how this app works: https://www.youtube.com/watch?v=JQohXRN3OBg
 
+Home Page
+---------------------------
+![Image0](https://i.imgur.com/PFCXgZB.png)
+
 Search function
 ---------------------------
 ![Image1](https://i.imgur.com/vTg0wbp.png)
