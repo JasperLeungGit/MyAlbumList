@@ -10,7 +10,7 @@ Search function
 
 Album List
 ---------------------------
-![Image2](https://i.imgur.com/9AsCSH9.png)
+![Image2](https://i.imgur.com/6bQHSxl.png)
 
 Adding Albums to List
 ---------------------------
